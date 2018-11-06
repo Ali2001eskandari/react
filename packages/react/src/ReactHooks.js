@@ -71,7 +71,7 @@ export function useRef<T>(initialValue: T): {current: T} {
 }
 
 export function useEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ) {
   const dispatcher = resolveDispatcher();
@@ -79,7 +79,7 @@ export function useEffect(
 }
 
 export function useMutationEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ) {
   const dispatcher = resolveDispatcher();
@@ -87,7 +87,7 @@ export function useMutationEffect(
 }
 
 export function useLayoutEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ) {
   const dispatcher = resolveDispatcher();

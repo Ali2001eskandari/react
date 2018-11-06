@@ -264,7 +264,7 @@ function useRef<T>(initialValue: T): {current: T} {
 }
 
 function useMutationEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ) {
   warning(
@@ -278,7 +278,7 @@ function useMutationEffect(
 }
 
 export function useLayoutEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ) {
   warning(

@@ -141,7 +141,7 @@ function useRef<T>(initialValue: T): {current: T} {
 }
 
 function useMutationEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ): void {
   nextHook();
@@ -153,7 +153,7 @@ function useMutationEffect(
 }
 
 function useLayoutEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ): void {
   nextHook();
@@ -165,7 +165,7 @@ function useLayoutEffect(
 }
 
 function useEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ): void {
   nextHook();

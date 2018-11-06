@@ -62,7 +62,7 @@ export type Hook = {
 
 type Effect = {
   tag: HookEffectTag,
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   destroy: (() => mixed) | null,
   inputs: Array<mixed>,
   next: Effect,
@@ -518,7 +518,7 @@ export function useRef<T>(initialValue: T): {current: T} {
 }
 
 export function useMutationEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ): void {
   useEffectImpl(
@@ -530,14 +530,14 @@ export function useMutationEffect(
 }
 
 export function useLayoutEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ): void {
   useEffectImpl(UpdateEffect, UnmountMutation | MountLayout, create, inputs);
 }
 
 export function useEffect(
-  create: () => mixed,
+  create: () => (() => mixed) | null | void,
   inputs: Array<mixed> | void | null,
 ): void {
   useEffectImpl(
